@@ -14,6 +14,6 @@ $ sudo npm install -g .
 
 ## Usage
 ``` 
-system-z -h
+$ system-z -h
 ```
 
