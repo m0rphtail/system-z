@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 
 const { Command } = require("commander");
-const os = require("os");
 const cpu = require("./cpu");
 const package = require("../package.json");
+const arch = require("./arch");
 
 const tool = new Command();
 
@@ -15,9 +15,5 @@ tool.option("-c, --cpu", "show CPU info");
 tool.parse(process.argv);
 
 const options = tool.opts();
-if (options.arch) {
-  console.log(`arch: ${os.arch()}`);
-}
-if (options.cpu) {
-  cpu();
-}
+if (options.arch) arch();
+if (options.cpu) cpu();
