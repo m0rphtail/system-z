@@ -7,6 +7,13 @@
 
 ---
 
+## Screenshots
+
+![](docs/tool.png)
+![](docs/tool-help.png)
+
+---
+
 ## Install 
 ```
 $ npm install
