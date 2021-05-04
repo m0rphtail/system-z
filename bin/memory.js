@@ -6,7 +6,7 @@ module.exports = () => {
   const usage =
     String(
       Math.round(totalMemory / (1024 * 1024) - freeMemory / (1024 * 1024)) +
-        " MiB /" +
+        " MiB / " +
         Math.round(totalMemory / (1024 * 1024))
     ) + " MiB";
   return `${usage}`;
