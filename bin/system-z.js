@@ -27,12 +27,7 @@ tool
 tool.parse(process.argv);
 
 display = (title, func) => {
-  var space = "";
-  const count = 10;
-  for (var i = 0; i <= count - title.length; i++) {
-    space += " ";
-  }
-  line = title + space + ": " + func;
+  line = title + " : " + func;
   console.log(boxen(line, { padding: 1, borderStyle: "round" }));
 };
 
@@ -46,7 +41,10 @@ displayAll = () => {
   const u = "Uptime    : " + uptime();
 
   console.log(
-    boxen(`${H}\n${o}\n${k}\n${a}\n${c}\n${m}\n${u}`, { padding: 1, borderStyle: "round" })
+    boxen(`${H}\n${o}\n${k}\n${a}\n${c}\n${m}\n${u}`, {
+      padding: 1,
+      borderStyle: "round",
+    })
   );
 };
 
