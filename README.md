@@ -5,6 +5,10 @@
 
 ### <em>cli tool to get system info</em>
 
+  - [Screenshots](#screenshots)
+  - [Install](#install)
+  - [Usage](#usage)
+
 ---
 
 ## Screenshots
