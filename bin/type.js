@@ -1,5 +1,5 @@
 const os = require("os");
 
-module.exports = function () {
-  console.log(`OS          : ${os.type()}`);
+module.exports = () => {
+  return `${os.type()}`;
 };

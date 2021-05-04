@@ -9,6 +9,7 @@ const hostname = require("./hostname");
 const type = require("./type");
 const kernel = require("./kernel");
 const uptime = require("./uptime");
+const boxen = require("boxen");
 
 const tool = new Command();
 
@@ -25,20 +26,44 @@ tool
 
 tool.parse(process.argv);
 
+display = (title, func) => {
+  var space = "";
+  const count = 10;
+  for (var i = 0; i <= count - title.length; i++) {
+    space += " ";
+  }
+  line = title + space + ": " + func;
+  console.log(boxen(line, { padding: 1, borderStyle: "round" }));
+};
+
+displayAll = () => {
+  const H = "Hostname  : " + hostname();
+  const o = "OS        : " + type();
+  const k = "Kernel    : " + kernel();
+  const a = "Arch      : " + arch();
+  const c = "CPU       : " + cpu();
+  const m = "RAM       : " + memory();
+  const u = "Uptime    : " + uptime();
+
+  console.log(
+    boxen(`${H}\n${o}\n${k}\n${a}\n${c}\n${m}\n${u}`, { padding: 1, borderStyle: "round" })
+  );
+};
+
 const options = tool.opts();
-if (options.arch) arch();
-else if (options.cpu) cpu();
-else if (options.memory) memory();
-else if (options.hostname) hostname();
-else if (options.type) type();
-else if (options.kernel) kernel();
-else if (options.uptime) uptime();
+if (options.arch) display("Arch", arch());
+else if (options.cpu) display("CPU", cpu());
+else if (options.memory) display("RAM", memory());
+else if (options.hostname) display("Hostname", hostname());
+else if (options.os) display("OS", type());
+else if (options.kernel) display("Kernel", kernel());
+else if (options.uptime) display("Uptime", uptime());
 else {
-  hostname();
-  type();
-  kernel();
-  arch();
-  cpu();
-  memory();
-  uptime();
+  // console.log(
+  //   boxen(
+  //     `${hostname()}\n${type()}\n${kernel()}\n${arch()}\n${cpu()}\n${memory()}\n${uptime()}`,
+  //     { padding: 1, borderStyle: "round" }
+  //   )
+  //);
+  displayAll();
 }
